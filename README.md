@@ -1,7 +1,3 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/uu0DCd-8)
-# Computing 2 Coursework Submission.
-**CID**: 02097287
-
 This game is called Endless Mountain, you are a skier, and you must use the left and right keys to dodge the trees.
 
 The turn aspect of the game is implemented with each frame refresh/repaint of the HTML Canvas; in each turn, the player can play left, right or nothing.
