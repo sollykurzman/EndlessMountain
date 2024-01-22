@@ -2,23 +2,14 @@
 # Computing 2 Coursework Submission.
 **CID**: 02097287
 
-This game is called Endless Mountain, you are a skiier and you must use the left and right keys to dodge the trees.
+This game is called Endless Mountain, you are a skier, and you must use the left and right keys to dodge the trees.
 
-The turn aspect of the game is implemented with each frame refresh/repaint of the HTML Canvas, in each turn the player can play left, right or nothing.
+The turn aspect of the game is implemented with each frame refresh/repaint of the HTML Canvas; in each turn, the player can play left, right or nothing.
 
-Board based is achieved through a coordinates system of player and obstacle postions as an x y position and collisions are calculated using this and the player and obstacle widths.
+Board-based is achieved through a coordinates system of player and obstacle positions as an x y position, and collisions are calculated using this and the player and obstacle widths.
 
-Current TODOs are as follows:
-- Represent the state of the game with one game_state variable that stores players position, obstacles, etc etc.
-- Add different obstacles and implement specific collision functions depending on the obstacle.
-- make the tree density dependent on screenwidth so is playable on all screen widths.
-- make tree start height dependent on the height of the page so playable on all screen widths.
-- make everything either camel case or snake case.
-- make the checkCollision function in EndlessMountain.js end properly once a collision is detected. 
-- Write unit tests.
-- Add trail behind the skiier.
-- Add title page.
-- Implement 2 player.
-- Implement sever side high score storage.
-- Adjust speed depending on amount of turn.
-- Make body turn with skis.
+The API documentation can be found by clicking on API Docs under the title of the game.
+
+Please refresh your page when resizing the webpage for the best experience.
+
+![Screenshot 2023-06-23 at 14 51 32](https://github.com/DE1-Computing-2-2023/computing-2-coursework-sollykurzman/assets/73850485/4df2be39-698e-4862-8d15-92c55f5c5170)
