@@ -1,0 +1,131 @@
+:root {
+	--page_margin: 50px;
+	--icon_heights: 50px;
+	--transition_time: 0.2s;
+	--instructions_font_size: 20px;
+}
+
+body {
+	overflow: hidden;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Helvetica', sans-serif;
+	background-color: white;
+}
+
+canvas {
+	background-color: white;
+}
+
+#score {
+	position: fixed;
+	left: var(--page_margin);
+	top: var(--page_margin);
+	display: flex;
+	align-items: flex-end;
+	gap: 5px;
+}
+
+#score .score_num {
+	height: var(--icon_heights);
+}
+
+#m {
+	height: calc((3/5) * var(--icon_heights));
+}
+
+canvas {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#pause {
+	position: fixed;
+	right: var(--page_margin);
+	top: var(--page_margin);
+	height: var(--icon_heights);
+}
+
+.relative_container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+#title_container {
+	position: fixed;
+	left: 50%;
+	top: var(--page_margin);
+	transform: translate(-50%, 0);
+}
+
+#title {
+	width: 50vw;
+	transition: var(--transition_time);
+	transition-timing-function: linear;
+}
+
+#instructions {
+	position: absolute;
+	left: 50%;
+	text-align: center;
+	bottom: -60px;
+	transform: translate(-50%, 0);
+	display: flex;
+	gap: 20px;
+	font-size: var(--instructions_font_size);
+	width: 100%;
+	justify-content: center;
+	transition: var(--transition_time);
+	transition-timing-function: linear;
+}
+
+#instructions a {
+	font-size: var(--instructions_font_size);
+	color: black;
+}
+
+.key {
+	display: inline;
+	height: var(--instructions_font_size);
+}
+
+#end_game {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: 0px;
+	left: 0px;
+	background-color: #a1d7ee50;
+	text-align: center;
+	transition: var(--transition_time);
+	opacity: 0;
+}
+
+#end_game_content {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transition: var(--transition_time);
+	transform: translate(-50%, -50%) scale(0.5);
+}
+
+@media only screen and (max-width: 1000px) 
+	{
+		:root {
+			--instructions_font_size: 15px;
+		}
+		#instructions {
+			bottom: -40px;
+			flex-wrap: wrap;
+		}
+}
+
+@media only screen and (max-width: 750px) 
+	{
+		:root {
+			--icon_heights: 40px;
+		}
+}

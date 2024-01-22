@@ -1,0 +1,21 @@
+{
+  "name": "computing-2-submission",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "web-app/server/server.js",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^9.2.2"
+  },
+  "dependencies": {
+    "cairo": "^0.1.0-alpha.3",
+    "docdash": "^2.0.1",
+    "install": "^0.13.0",
+    "jslint": "^0.12.1",
+    "pango": "^0.0.3",
+    "pkg-config": "^1.1.1",
+    "ramda": "^0.29.0"
+  }
+}

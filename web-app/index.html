@@ -1,0 +1,62 @@
+<!-- In HTML Comments are written like this -->
+<!-- They can all be removed for your apps -->
+<!doctype html> <!-- This first line tells browsers to expect modern standard html 5 -->
+<html lang="en-gb"> <!-- This is indicates the page is written in British English, useful for accessibility -->
+    </head><meta charset="utf-8"> <!-- This indicates how the file is encoded. utf-8 is standard -->
+        <title>Endless Mountain</title> <!-- All pages need a title, this will be displayed in the browser's title bar -->
+        <link rel="stylesheet" href="default.css"> <!-- Import style sheet – default.css -->
+        <link rel="icon" href="./assets/favicon.png"> <!-- Import 'Favorites Icon' – favicon.png -->
+    </head>
+    <body>
+        <canvas></canvas>
+
+        <div id="end_game">
+            <div class="relative_container">
+                <div id="end_game_content">
+                    <img src="assets/you_died.svg" alt="you died text in font">
+                    <p>
+                        press
+                        <img class="key" src="assets/space_key.svg" alt="space key icon">
+                        to restart
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="title_container">
+            <div class="relative_container">
+                <img src="assets/title.svg" id="title" alt="The game title">
+                <div id="instructions">
+                    <div>
+                        <p>
+                            <img class="key" src="assets/space_key.svg" alt="space key icon">
+                            to play/pause
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <img class="key" src="assets/left_key.svg" alt="left key icon"> 
+                            <img class="key" src="assets/right_key.svg" alt="right key icon">
+                            to move
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <img class="key" src="assets/docs.svg" alt="API documentation icon">
+                            <a href="../docs/EndlessMountain.html">API Docs</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="score">
+            <img class="score_num" src="assets/numbers/num-00.svg" alt="a 0 digit of the score">
+            <img id="m" src="assets/m.svg" alt="units of the score (meters)">
+        </div>
+
+        <img id="pause" src="assets/paused_button.svg" onclick="pause()" alt="Button to indicate if the game is paused or not." tabindex=0>
+        
+        <script type="module" src="main.js"></script>
+    </body>
+</html>
