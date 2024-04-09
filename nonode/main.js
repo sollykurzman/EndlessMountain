@@ -126,6 +126,34 @@ EndlessMountain.create_board = function (
  * @returns {GameState} the game state with set player positions
  */
 
+EndlessMountain.update_board = function (
+    game_state,
+    width = 1000,
+    height = 1000
+) {
+    return {
+        width: width,
+        height: height,
+        player_x: game_state.player_x,
+        player_y: game_state.player_y,
+        obstacles: game_state.obstacles,
+        dy: game_state.dy,
+        dx: game_state.dx,
+        score: game_state.score,
+        end_game: game_state.end_game
+    };
+};
+
+/**
+ * Sets the players position on the board to be the centre of the board,
+ * this is dependent on the players width and height and
+ * the board height and the board width.
+ * @memberof EndlessMountain
+ * @function
+ * @param {GameState} game_state the state of the game defined by parameters
+ * @returns {GameState} the game state with set player positions
+ */
+
 EndlessMountain.set_player_position = function (
     game_state
 ) {
@@ -480,9 +508,9 @@ EndlessMountain.game_is_ended = function (
 //IMPORT FIX ABOVE THIS LINE
 
 //Set the width of the game interms of the board_cell property
-const game_width = Math.ceil(window.innerWidth / EndlessMountain.board_cell);
+let game_width = Math.ceil(window.innerWidth / EndlessMountain.board_cell);
 //Set the height of the game interms of the board_cell property
-const game_height = Math.ceil(window.innerHeight / EndlessMountain.board_cell);
+let game_height = Math.ceil(window.innerHeight / EndlessMountain.board_cell);
 //the game canvas
 const canvas = document.querySelector("canvas");
 //getting canvas context
@@ -503,6 +531,10 @@ const end_game_content = document.querySelector("#end_game_content");
 let left_key = false;
 //indicates if the right key is being pressed or not
 let right_key = false;
+//indicates if the left button is being pressed or not
+let left_button = false;
+//indicates if the right button is being pressed or not
+let right_button = false;
 //indicates if the game is paused
 let paused = true;
 //indicator to trigger new obstacles
@@ -525,7 +557,7 @@ function pause() {
         //change the pause button icon
         pause_button.src = "assets/paused_button.svg";
         //change the game title width
-        game_title.style.width = "50vw";
+        game_title.style.transform = "scale(1)";
         //if the player has died
         if (game_state.end_game) {
             //show the end game screen
@@ -544,7 +576,11 @@ function pause() {
         //change the pause button icon
         pause_button.src = "assets/pause_button.svg";
         //change the game title width
-        game_title.style.width = "25vw";
+        if (window.innerWidth > 450) {
+            game_title.style.transform = "scale(0.5)";
+        } else {
+            game_title.style.width = "scale(0.8)";
+        }
         //hide the game instructions
         game_instructions.style.opacity = "0";
         //the player had died
@@ -560,6 +596,68 @@ function pause() {
         }
     }
 }
+
+const leftButton = document.getElementById("moveLeft");
+const rightButton = document.getElementById("moveRight");
+const pauseButton = document.getElementById("pauseButton");
+
+leftButton.addEventListener("mousedown", function() {
+    left_button = true;
+    paused = true;
+    pause();
+});
+
+leftButton.addEventListener("mouseup", function() {
+    left_button = false;
+});
+
+rightButton.addEventListener("mousedown", function() {
+    right_button = true;
+    paused = true;
+    pause();
+});
+
+rightButton.addEventListener("mouseup", function() {
+    right_button = false;
+});
+
+leftButton.addEventListener("touchstart", function(event) {
+    event.preventDefault()
+    left_button = true;
+    paused = true;
+    pause();
+});
+
+leftButton.addEventListener("touchend", function() {
+    left_button = false;
+});
+
+rightButton.addEventListener("touchstart", function(event) {
+    event.preventDefault()
+    right_button = true;
+    paused = true;
+    pause();
+});
+
+rightButton.addEventListener("touchend", function() {
+    right_button = false;
+});
+
+pauseButton.addEventListener("click", function() {
+    pause();
+});
+
+window.addEventListener('resize', function(event) {
+    //Set the width of the game interms of the board_cell property
+    game_width = Math.ceil(window.innerWidth / EndlessMountain.board_cell);
+    //Set the height of the game interms of the board_cell property
+    game_height = Math.ceil(window.innerHeight / EndlessMountain.board_cell);
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    game_state = EndlessMountain.update_board();
+}, true);
 
 //A function that checks if keys have been pressed down and
 //sets the indicator variables to true.
@@ -763,7 +861,7 @@ function move_player() {
             ski_angle = 0;
         }
     //else if left key is active
-    } else if (left_key) {
+    } else if (left_key || left_button) {
         //move the player left
         game_state = EndlessMountain.move_left(game_state);
         //if the ski angle is less than 30deg
@@ -772,7 +870,7 @@ function move_player() {
             ski_angle += da;
         }
     //else if right key is active
-    } else if (right_key) {
+    } else if (right_key || right_button) {
         //move the player right
         game_state = EndlessMountain.move_right(game_state);
         //if the ski angle is more than -30deg

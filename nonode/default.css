@@ -11,10 +11,33 @@ body {
 	padding: 0px;
 	font-family: 'Helvetica', sans-serif;
 	background-color: white;
+	touch-action: none;
 }
 
 canvas {
 	background-color: white;
+}
+
+#moveRight, #moveLeft {
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+}
+
+#moveRight {
+	position: fixed;
+	right: 0px;
+	top: 0px;
+	height: 100vh;
+	width: 50vw;
+}
+
+#moveLeft {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	height: 100vh;
+	width: 50vw;
 }
 
 #score {
@@ -71,12 +94,12 @@ canvas {
 	position: absolute;
 	left: 50%;
 	text-align: center;
-	bottom: -60px;
+	top: 80px;
 	transform: translate(-50%, 0);
-	display: flex;
-	gap: 20px;
-	font-size: var(--instructions_font_size);
 	width: 100%;
+	display: flex;
+	gap: 30px;
+	font-size: var(--instructions_font_size);
 	justify-content: center;
 	transition: var(--transition_time);
 	transition-timing-function: linear;
@@ -90,6 +113,11 @@ canvas {
 .key {
 	display: inline;
 	height: var(--instructions_font_size);
+}
+
+.tap {
+	transform: translate(0, 20%) scale(1.5, 1.8);
+	margin: 0px 5px;
 }
 
 #end_game {
@@ -112,14 +140,23 @@ canvas {
 	transform: translate(-50%, -50%) scale(0.5);
 }
 
+@media only screen and (max-width: 1310px) 
+	{
+		#instructions {
+			top: 70px;
+			flex-wrap: wrap;
+			display: unset;
+			gap: 20px;
+		}
+}
+
 @media only screen and (max-width: 1000px) 
 	{
 		:root {
 			--instructions_font_size: 15px;
 		}
 		#instructions {
-			bottom: -40px;
-			flex-wrap: wrap;
+			top: 50px;
 		}
 }
 
@@ -127,5 +164,24 @@ canvas {
 	{
 		:root {
 			--icon_heights: 40px;
+		}
+}
+
+@media only screen and (max-width: 600px) 
+	{
+		:root {
+			--page_margin: 20px;
+		}
+}
+
+@media only screen and (max-width: 420px) 
+	{
+		#instructions {
+			top: 50px;
+			width: 90vw;
+		}
+		:root {
+			--icon_heights: 25px;
+			--page_margin: 15px;
 		}
 }

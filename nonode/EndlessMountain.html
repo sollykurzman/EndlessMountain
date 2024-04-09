@@ -3,6 +3,7 @@
 <!doctype html> <!-- This first line tells browsers to expect modern standard html 5 -->
 <html lang="en-gb"> <!-- This is indicates the page is written in British English, useful for accessibility -->
     </head><meta charset="utf-8"> <!-- This indicates how the file is encoded. utf-8 is standard -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Endless Mountain</title> <!-- All pages need a title, this will be displayed in the browser's title bar -->
         <link rel="stylesheet" href="default.css"> <!-- Import style sheet – default.css -->
         <link rel="icon" href="./assets/favicon.png"> <!-- Import 'Favorites Icon' – favicon.png -->
@@ -17,11 +18,21 @@
                     <p>
                         press
                         <img class="key" src="assets/space_key.svg" alt="space key icon">
+                        or tap
+                        <img class="key tap" src="assets/click.svg" alt="tap icon"> 
                         to restart
                     </p>
                 </div>
             </div>
         </div>
+
+        <div id="score">
+            <img class="score_num" src="assets/numbers/num_0.svg" alt="a 0 digit of the score">
+            <img id="m" src="assets/m.svg" alt="units of the score (meters)">
+        </div>
+        
+        <div id="moveRight"></div>
+        <div id="moveLeft"></div>
 
         <div id="title_container">
             <div class="relative_container">
@@ -29,7 +40,7 @@
                 <div id="instructions">
                     <div>
                         <p>
-                            <img class="key" src="assets/space_key.svg" alt="space key icon">
+                            <img class="key" src="assets/space_key.svg" alt="space key icon"> or <img class="key" src="assets/paused_button.svg" alt="Button to indicate if the game is paused or not." >
                             to play/pause
                         </p>
                     </div>
@@ -37,6 +48,8 @@
                         <p>
                             <img class="key" src="assets/left_key.svg" alt="left key icon"> 
                             <img class="key" src="assets/right_key.svg" alt="right key icon">
+                            or tap left/right 
+                            <img class="key tap" src="assets/click.svg" alt="tap icon"> 
                             to move
                         </p>
                     </div>
@@ -50,12 +63,9 @@
             </div>
         </div>
 
-        <div id="score">
-            <img class="score_num" src="assets/numbers/num_0.svg" alt="a 0 digit of the score">
-            <img id="m" src="assets/m.svg" alt="units of the score (meters)">
+        <div id="pauseButton">
+            <img id="pause" src="assets/paused_button.svg" alt="Button to indicate if the game is paused or not." tabindex=0>
         </div>
-
-        <img id="pause" src="assets/paused_button.svg" onclick="pause()" alt="Button to indicate if the game is paused or not." tabindex=0>
         
         <script src="main.js"></script>
     </body>
